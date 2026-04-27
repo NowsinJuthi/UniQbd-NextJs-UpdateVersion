@@ -20,7 +20,7 @@ const server = http.createServer(app);
 
 export const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: process.env.CLIENT_URL || "*",
     credentials: true,
   },
 });
@@ -36,10 +36,7 @@ io.on("connection", (socket) => {
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://103.114.38.215:3000"
-    ],
+    origin: process.env.CLIENT_URL || "*",
     credentials: true,
   })
 );
