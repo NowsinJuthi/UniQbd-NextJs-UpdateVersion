@@ -74,8 +74,7 @@ const Topup = () => {
               hover:shadow-2xl hover:-translate-y-2 
               ${index === 4 ? "col-span-2 row-span-2" : ""}`}
             >
-              {/* INNER GLOW (UNCHANGED) */}
-              <div className="absolute bg-radial-[at_3%_1%] from-[#9bddf5] to-[#c9effa] to-30% -top-1 left-0 w-full inset-[3.03px] rounded-t-[1rem] border-t-[3px] overflow-hidden border-white/10 pointer-events-none"></div>
+              
 
               {/* IMAGE OPTIMIZED */}
               <Image
