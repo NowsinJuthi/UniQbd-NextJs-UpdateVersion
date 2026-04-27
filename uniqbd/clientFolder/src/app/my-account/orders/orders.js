@@ -30,7 +30,7 @@ const Orders = () => {
     const fetchOrders = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3001/api/v1/my-orders",
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/my-orders",
           {
             withCredentials: true,
           },

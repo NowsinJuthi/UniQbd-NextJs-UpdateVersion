@@ -22,7 +22,7 @@ const AllProductpage = () => {
 
   // -------------------- SWR DATA FETCH --------------------
   const { data, isLoading, mutate } = useSWR(
-    `http://localhost:3001/api/v1/product?includeUnpublished=true&page=${page}&limit=${limit}`,
+    `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product?includeUnpublished=true&page=${page}&limit=${limit}`,
     fetcher,
   );
 
@@ -33,7 +33,7 @@ const AllProductpage = () => {
   const toggleFeatured = async (id) => {
     try {
       const { data } = await axios.patch(
-        `http://localhost:3001/api/v1/product/featured/${id}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/featured/${id}`,
         {},
         { withCredentials: true },
       );
@@ -47,7 +47,7 @@ const AllProductpage = () => {
   const togglePublish = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:3001/api/v1/product/publish/${id}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/publish/${id}`,
         {},
         { withCredentials: true },
       );
@@ -63,7 +63,7 @@ const AllProductpage = () => {
       const confirmDelete = window.confirm("Are you sure?");
       if (!confirmDelete) return;
 
-      await axios.delete(`http://localhost:3001/api/v1/product/${id}`, {
+      await axios.delete(`https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/${id}`, {
         withCredentials: true,
       });
 
@@ -133,7 +133,7 @@ const AllProductpage = () => {
                   <Link href={`/products/${product.slug}`}>
                     <div className="w-full flex items-center justify-center">
                       <Image
-                        src={`http://localhost:3001/uploads/${product.photo}`}
+                        src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`}
                         alt={product.name}
                         width={200}
                         height={200}

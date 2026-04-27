@@ -11,7 +11,7 @@ const Review = () => {
   const getAllReviews = async () => {
     try {
       const res = await axios.get(
-        "http://localhost:3001/api/v1/admin/all",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/admin/all",
         { withCredentials: true }
       );
 
@@ -28,7 +28,7 @@ const Review = () => {
   const approveReview = async (id) => {
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/approve/${id}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/approve/${id}`,
         {},
         { withCredentials: true }
       );
@@ -47,7 +47,7 @@ const Review = () => {
 
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/review/update/${review._id}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/review/update/${review._id}`,
         {
           comment: newComment,
         },

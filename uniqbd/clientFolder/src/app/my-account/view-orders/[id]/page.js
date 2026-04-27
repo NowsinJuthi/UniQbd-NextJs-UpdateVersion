@@ -17,7 +17,7 @@ const ViewPage = () => {
     try {
       setLoading(true);
 
-      const res = await axios.get(`http://localhost:3001/api/v1/order/${id}`, {
+      const res = await axios.get(`https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/order/${id}`, {
         withCredentials: true,
       });
 

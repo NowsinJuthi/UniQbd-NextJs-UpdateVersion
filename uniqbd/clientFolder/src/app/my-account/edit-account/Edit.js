@@ -20,7 +20,7 @@ const EditAccount = () => {
       try {
         const token = localStorage.getItem("accessToken");
 
-        const res = await axios.get("http://localhost:3001/api/v1/user", {
+        const res = await axios.get("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/user", {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -45,7 +45,7 @@ const EditAccount = () => {
       const token = localStorage.getItem("accessToken");
 
       await axios.put(
-        "http://localhost:3001/api/v1/update-profile",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/update-profile",
         form,
         {
           headers: {
@@ -65,7 +65,7 @@ const EditAccount = () => {
       const token = localStorage.getItem("accessToken");
 
       await axios.put(
-        "http://localhost:3001/api/v1/change-password",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/change-password",
         {
           currentPassword,
           newPassword,

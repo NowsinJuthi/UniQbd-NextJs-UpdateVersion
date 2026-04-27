@@ -13,7 +13,7 @@ const ShopPage = () => {
     const fetchProducts = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3001/api/v1/product"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product"
         );
 
         setProducts(data.products || []);
@@ -30,7 +30,7 @@ const ShopPage = () => {
     const fetchFeatured = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3001/api/v1/product/featured/list"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/featured/list"
         );
 
         setFeatured(data.products || []);
@@ -61,7 +61,7 @@ const ShopPage = () => {
             {/* IMAGE OPTIMIZED */}
             <div className="mb-3 flex items-center justify-center w-full">
               <Image
-                src={`http://localhost:3001/uploads/${product.photo}`}
+                src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`}
                 alt={product.name}
                 width={800}
                 height={0}

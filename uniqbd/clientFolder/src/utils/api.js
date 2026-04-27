@@ -2,7 +2,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3001";
+const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://uniqbd-nextjs-updateversion-backend.onrender.com";
 
 export const postData = async (url, formData) => {
   try {

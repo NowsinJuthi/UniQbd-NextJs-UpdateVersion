@@ -14,7 +14,7 @@ const GiftCard = () => {
         setLoading(true);
 
         const { data: categoryData } = await axios.get(
-          "http://localhost:3001/api/v1/category"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/category"
         );
 
         const category = categoryData.categories.find(
@@ -28,7 +28,7 @@ const GiftCard = () => {
         }
 
         const { data: productsRes } = await axios.get(
-          `http://localhost:3001/api/v1/product?category=${category._id}`
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product?category=${category._id}`
         );
 
         setProducts(productsRes.products || []);
@@ -93,7 +93,7 @@ const GiftCard = () => {
               {/* IMAGE */}
               <div className="flex items-center justify-center p-4">
                 <img
-                  src={`http://localhost:3001/uploads/${product.photo}`}
+                  src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`}
                   alt={product.name}
                   className="max-h-full object-contain group-hover:scale-110 transition duration-300"
                 />

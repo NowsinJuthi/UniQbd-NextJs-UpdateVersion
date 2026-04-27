@@ -13,7 +13,7 @@ const Topup = () => {
     const fetchTopupProducts = async () => {
       try {
         const { data: categoryData } = await axios.get(
-          "http://localhost:3001/api/v1/category"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/category"
         );
 
         const topupCategory = categoryData.categories.find(
@@ -26,7 +26,7 @@ const Topup = () => {
         }
 
         const { data: productsRes } = await axios.get(
-          `http://localhost:3001/api/v1/product?category=${topupCategory._id}`
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product?category=${topupCategory._id}`
         );
 
         setTopupProducts(productsRes.products || []);
@@ -74,11 +74,13 @@ const Topup = () => {
               hover:shadow-2xl hover:-translate-y-2 
               ${index === 4 ? "col-span-2 row-span-2" : ""}`}
             >
-              
+              INNER GLOW (UNCHANGED)
+              <div className="absolute bg-radial-[at_3%_1%] from-[#9bddf5] to-[#c9effa] to-30% 
+              -top-1 left-0 w-full inset-[3.03px] rounded-t-[1rem] border-t-[3px] overflow-hidden border-white/10 pointer-events-none"></div>
 
               {/* IMAGE OPTIMIZED */}
               <Image
-                src={`http://localhost:3001/uploads/${product.photo}`}
+                src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`}
                 alt={product.name}
                 width={800}
                 height={120}

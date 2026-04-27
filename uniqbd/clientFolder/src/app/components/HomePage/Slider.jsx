@@ -27,7 +27,7 @@ const HomeSliderDisplay = () => {
     const fetchSlider = async () => {
       try {
         const res = await fetch(
-          "http://localhost:3001/api/v1/home-slider/images"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/home-slider/images"
         );
         const data = await res.json();
 
@@ -51,7 +51,7 @@ const HomeSliderDisplay = () => {
             {/* IMAGE OPTIMIZED */}
             <Image
               className="w-full rounded-3xl shadow-2xl h-[320px] md:h-[440px] lg:h-[560px] object-cover"
-              src={`http://localhost:3001${src}`}
+              src={`https://uniqbd-nextjs-updateversion-backend.onrender.com${src}`}
               alt={`slider${index + 1}`}
               width={1200}
               height={600}

@@ -21,7 +21,7 @@ const ProductTabs = ({ product }) => {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/v1/user", {
+        const res = await axios.get("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/user", {
           withCredentials: true,
         });
 
@@ -38,7 +38,7 @@ const ProductTabs = ({ product }) => {
   const fetchReviews = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:3001/api/v1/reviews/${product._id}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/reviews/${product._id}`,
       );
 
       setReviews(res.data.reviews || []);
@@ -67,7 +67,7 @@ const ProductTabs = ({ product }) => {
     try {
       setLoading(true);
 
-      await axios.post("http://localhost:3001/api/v1/reviews", {
+      await axios.post("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/reviews", {
         productId: product._id,
         name: user.name, 
         rating,

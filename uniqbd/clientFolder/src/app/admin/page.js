@@ -27,14 +27,14 @@ const AdminDashboard = () => {
     try {
       setLoading(true);
 
-      const res = await axios.get("http://localhost:3001/api/v1/admin", {
+      const res = await axios.get("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/admin", {
         withCredentials: true,
       });
 
       setStats(res.data);
 
       const orderRes = await axios.get(
-        "http://localhost:3001/api/v1/orders",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/orders",
         { withCredentials: true }
       );
 

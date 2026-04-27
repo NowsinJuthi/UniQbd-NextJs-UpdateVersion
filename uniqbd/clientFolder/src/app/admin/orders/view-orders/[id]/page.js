@@ -19,7 +19,7 @@ const ViewPage = () => {
     const fetchOrder = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/api/v1/order/${id}`,
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/order/${id}`,
           { withCredentials: true },
         );
 
@@ -37,7 +37,7 @@ const ViewPage = () => {
     const fetchAllNotes = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/api/v1/all-notes`,
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/all-notes`,
           { withCredentials: true },
         );
 
@@ -53,7 +53,7 @@ const ViewPage = () => {
   const updateStatus = async (orderId, status) => {
     try {
       await axios.put(
-        `http://localhost:3001/api/v1/order/status/${orderId}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/order/status/${orderId}`,
         { order_status: status },
         { withCredentials: true },
       );
@@ -72,7 +72,7 @@ const ViewPage = () => {
       if (!selectedNote && !customMessage.trim()) return;
 
       await axios.post(
-        `http://localhost:3001/api/v1/send-notes-to-customer`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/send-notes-to-customer`,
         {
           orderId: id,
           noteIds: selectedNote ? [selectedNote] : [],

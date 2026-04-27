@@ -36,7 +36,7 @@ const ProductDetails = () => {
     const fetchProduct = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/api/v1/product/${slug}`,
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/${slug}`,
         );
 
         console.log("PRODUCT DATA:", data.product);
@@ -56,7 +56,7 @@ const ProductDetails = () => {
         }
 
         const relatedRes = await axios.get(
-          `http://localhost:3001/api/v1/related/${data.product._id}`,
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/related/${data.product._id}`,
         );
 
         setRelated(relatedRes.data.products || []);
@@ -143,7 +143,7 @@ const ProductDetails = () => {
                   >
                     <div className="package grid grid-cols-2 ">
                       <img
-                        src={`http://localhost:3001/uploads/${product.packageImage}`}
+                        src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.packageImage}`}
                         alt={product.name}
                         className="object-contain z-10 h-10 pr-10"
                       />

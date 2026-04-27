@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import AdminMenuPage from "../Menu/page";
 
-const API = "http://localhost:3001/api/v1";
+const API = "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1";
 
 const Alluserspage = () => {
   const [users, setUsers] = useState([]);

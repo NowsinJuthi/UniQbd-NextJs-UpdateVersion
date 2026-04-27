@@ -45,7 +45,7 @@ const Orders = () => {
   const fetchOrders = async () => {
     try {
       const { data } = await axios.get(
-        "http://localhost:3001/api/v1/orders",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/orders",
         {
           withCredentials: true,
         }
@@ -78,7 +78,7 @@ const Orders = () => {
       await Promise.all(
         selectedOrders.map((id) =>
           axios.put(
-            `http://localhost:3001/api/v1/order/status/${id}`,
+            `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/order/status/${id}`,
             { order_status: selectedStatus },
             { withCredentials: true }
           )

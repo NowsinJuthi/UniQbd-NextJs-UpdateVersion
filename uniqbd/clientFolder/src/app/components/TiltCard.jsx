@@ -19,7 +19,7 @@ const TiltCard = () => {
     const fetchProduct = async () => {
       try {
         const { data } = await axios.get(
-          `http://localhost:3001/api/v1/product/${slug}`
+          `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/${slug}`
         );
         setProduct(data.product);
       } catch (error) {
@@ -182,7 +182,7 @@ const TiltCard = () => {
         {/* Image */}
         <img
           ref={imgRef}
-          src={`http://localhost:3001/uploads/${product.photo}`}
+          src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`}
           alt={product.name}
           className="object-contain z-10"
           style={{ transformStyle: "preserve-3d" }}

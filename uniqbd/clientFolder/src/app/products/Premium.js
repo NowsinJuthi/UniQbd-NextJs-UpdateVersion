@@ -13,7 +13,7 @@ const PremiumCard = ({ item }) => {
       {/* Image */}
       <div className="h-40 flex items-center justify-center bg-white/5">
         <img
-          src={`http://localhost:3001/uploads/${item.photo}`}
+          src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${item.photo}`}
           alt={item.name}
           className="h-32 object-contain transition-transform duration-500 
           group-hover:scale-110"

@@ -14,7 +14,7 @@ const CategoryPage = () => {
 
   const fetchCategories = async () => {
     try {
-      const res = await axios.get("http://localhost:3001/api/v1/category");
+      const res = await axios.get("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/category");
       setCategories(res.data.categories || []);
     } catch (error) {
       console.log(error);
@@ -32,7 +32,7 @@ const CategoryPage = () => {
 
     try {
       setLoading(true);
-      await axios.post("http://localhost:3001/api/v1/category", { name });
+      await axios.post("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/category", { name });
       setName("");
       fetchCategories();
     } catch (error) {
@@ -46,7 +46,7 @@ const CategoryPage = () => {
   const deleteCategory = async (id) => {
     if (!confirm("Delete this category?")) return;
     try {
-      await axios.delete(`http://localhost:3001/api/v1/category/${id}`);
+      await axios.delete(`https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/category/${id}`);
       fetchCategories();
     } catch (error) {
       console.log(error);
@@ -69,7 +69,7 @@ const CategoryPage = () => {
   const saveEditing = async (id) => {
     if (!editingName) return alert("Category name required");
     try {
-      await axios.put(`http://localhost:3001/api/v1/category/${id}`, {
+      await axios.put(`https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/category/${id}`, {
         name: editingName,
       });
       setEditingId(null);

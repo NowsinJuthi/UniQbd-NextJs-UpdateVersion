@@ -30,7 +30,7 @@ const EditProductPage = () => {
       if (photo) formData.append("photo", photo);
 
       await axios.put(
-        `http://localhost:3001/api/v1/product/${product._id}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/${product._id}`,
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

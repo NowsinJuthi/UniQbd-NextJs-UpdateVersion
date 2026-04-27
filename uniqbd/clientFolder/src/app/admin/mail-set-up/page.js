@@ -54,7 +54,7 @@ const Mailpage = () => {
   const saveSettings = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/v1/smtp/save",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/smtp/save",
         form
       );
       alert(res.data.message);
@@ -66,7 +66,7 @@ const Mailpage = () => {
   const testConnection = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:3001/api/v1/smtp/test",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/smtp/test",
         {
           ...form,
           port: Number(form.port),
@@ -81,7 +81,7 @@ const Mailpage = () => {
   useEffect(() => {
     const getConfig = async () => {
       try {
-        const res = await axios.get("http://localhost:3001/api/v1/get");
+        const res = await axios.get("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/get");
         if (res.data.data) {
           setForm((prev) => ({
             ...prev,

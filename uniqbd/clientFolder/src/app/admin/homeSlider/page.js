@@ -14,7 +14,7 @@ const HomeSlider = () => {
     const fetchImages = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/api/v1/home-slider/images",
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/home-slider/images",
           { withCredentials: true }
         );
 
@@ -44,7 +44,7 @@ const HomeSlider = () => {
   const imgPath = images[index];
 
   try {
-    await axios.delete("http://localhost:3001/api/v1/home-slider", {
+    await axios.delete("https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/home-slider", {
       data: { path: imgPath },
       withCredentials: true,
     });
@@ -98,7 +98,7 @@ const HomeSlider = () => {
               </h3>
 
               <UploadBox
-                url="http://localhost:3001/api/v1/home-slider"
+                url="https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/home-slider"
                 name="images"
                 multiple
                 onChange={handleFilesChange}
@@ -134,7 +134,7 @@ const HomeSlider = () => {
 
                         {/* IMAGE */}
                         <img
-                          src={`http://localhost:3001${img}`}
+                          src={`https://uniqbd-nextjs-updateversion-backend.onrender.com${img}`}
                           className="w-full h-36 object-cover group-hover:scale-110 transition"
                           onError={(e) => {
                             e.target.style.display = "none";

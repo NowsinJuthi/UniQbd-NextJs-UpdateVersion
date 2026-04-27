@@ -18,7 +18,7 @@ const SearchPage = () => {
         setLoading(true);
 
         const { data } = await axios.get(
-          "http://localhost:3001/api/v1/product"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product"
         );
 
         setProducts(data.products || []);
@@ -65,7 +65,7 @@ const SearchPage = () => {
             hover:shadow-2xl hover:-translate-y-2 border-button shadow-inner shadow-button/30"
           >
             <img
-              src={`http://localhost:3001/uploads/${product.photo}`}
+              src={`https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`}
               alt={product.name}
               className="object-contain mb-2"
             />

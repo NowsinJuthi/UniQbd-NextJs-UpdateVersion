@@ -5,7 +5,7 @@ export async function generateMetadata({ params }) {
   const { slug } = await params;
 
   const res = await fetch(
-    `http://localhost:3001/api/v1/product/${slug}`,
+    `https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product/${slug}`,
     { cache: "no-store" }
   );
 
@@ -26,7 +26,7 @@ export async function generateMetadata({ params }) {
       title: `${product.name} | UniQbd`,
       description: product.shortDescription,
       images: [
-        `http://localhost:3001/uploads/${product.photo}`,
+        `https://uniqbd-nextjs-updateversion-backend.onrender.com/uploads/${product.photo}`,
       ],
     },
   };

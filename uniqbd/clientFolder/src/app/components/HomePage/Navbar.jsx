@@ -29,7 +29,7 @@ const Navbar = () => {
     const fetchAllProducts = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:3001/api/v1/product"
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/product"
         );
         setProducts(data.products || []);
       } catch (error) {

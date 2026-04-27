@@ -19,7 +19,7 @@ const Account = () => {
     const fetchProfile = async () => {
       try {
         const res = await axios.get(
-          "http://localhost:3001/api/v1/user",
+          "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/user",
           {
             withCredentials: true,
           }
@@ -38,7 +38,7 @@ const Account = () => {
   const handleLogout = async () => {
     try {
       await axios.get(
-        "http://localhost:3001/api/v1/logout",
+        "https://uniqbd-nextjs-updateversion-backend.onrender.com/api/v1/logout",
         {
           withCredentials: true,
         }
