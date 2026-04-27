@@ -1,0 +1,111 @@
+// data/games.js
+export const games = [
+    {
+        id: 1,
+        name: "PUBG UC",
+        slug: "pubg-uc",
+        category: "top-up",
+        img: "/images/uc.png",
+        packages: [
+            { uc: "60 UC", price: "70 TK" },
+            { uc: "325 UC", price: "350 TK" },
+            { uc: "660 UC", price: "700 TK" },
+        ],
+    },
+    {
+        id: 2,
+        name: "Free Fire Diamonds",
+        slug: "free-fire",
+        category: "top-up",
+        img: "/images/diamond.png",
+        packages: [
+            { uc: "100 Diamonds", price: "90 TK" },
+            { uc: "310 Diamonds", price: "260 TK" },
+            { uc: "520 Diamonds", price: "420 TK" },
+        ],
+    },
+    {
+        id: 3,
+        name: "COD Points",
+        slug: "cod-points",
+        category: "top-up",
+        img: "/images/cp.png",
+        packages: [
+            { uc: "80 CP", price: "90 TK" },
+            { uc: "420 CP", price: "420 TK" },
+            { uc: "880 CP", price: "800 TK" },
+        ],
+    },
+    {
+        id: 4,
+        name: "COD Points",
+        slug: "cod-points-2",
+        category: "top-up",
+        img: "/images/cp.png",
+        packages: [
+            { uc: "80 CP", price: "90 TK" },
+            { uc: "420 CP", price: "420 TK" },
+            { uc: "880 CP", price: "800 TK" },
+        ],
+    },
+    {
+        id: 5,
+        name: "PUBG UC",
+        slug: "pubg-uc-2",
+        category: "top-up",
+        img: "/images/uc.png",
+        packages: [
+            { uc: "60 UC", price: "70 TK" },
+            { uc: "325 UC", price: "350 TK" },
+            { uc: "660 UC", price: "700 TK" },
+        ],
+    },
+    {
+        id: 6,
+        name: "COD Points",
+        slug: "cod-points-3",
+        category: "top-up",
+        img: "/images/cp.png",
+        packages: [
+            { uc: "80 CP", price: "90 TK" },
+            { uc: "420 CP", price: "420 TK" },
+            { uc: "880 CP", price: "800 TK" },
+        ],
+    },
+    {
+        id: 7,
+        name: "Embybd",
+        slug: "embybd-movie-server",
+        category: "subscription",
+        img: "/images/Emby-UniQbd.png",
+        packages: [
+            { uc: "1 Month", price: "90 TK" },
+            { uc: "3 Month", price: "260 TK" },
+            { uc: "6 Month", price: "420 TK" },
+        ],
+    },
+    {
+        id: 8,
+        name: "FIFA Mobile",
+        slug: "fifa-mobile",
+        category: "top-up",
+        img: "/images/FIFA-Mobile.png",
+        packages: [
+            { uc: "100 Points", price: "90 TK" },
+            { uc: "310 Points", price: "260 TK" },
+            { uc: "520 Points", price: "420 TK" },
+        ],
+    },
+    {
+        id: 9,
+        name: "Once Human",
+        slug: "once-human",
+        category: "top-up",
+        img: "/images/Once-Human.png",
+        packages: [
+            { uc: "100 Credits", price: "90 TK" },
+            { uc: "310 Credits", price: "260 TK" },
+            { uc: "520 Credits", price: "420 TK" },
+        ],
+    },
+];
