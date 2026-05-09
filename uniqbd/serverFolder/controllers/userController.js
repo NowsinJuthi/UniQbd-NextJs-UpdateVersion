@@ -158,12 +158,12 @@ export async function loginController(req, res) {
     await user.save();
 
     const cookieOptions = {
-      httpOnly: true,   // 🔥 IMPORTANT
-      secure: false,    // production হলে true (https)
-      sameSite: "lax",
+      httpOnly: true,
+      secure: true,
+      sameSite: "None",
+      path: "/",
     };
 
-    // 🔥 cookies set (ONLY SERVER)
     res.cookie("accessToken", accessToken, cookieOptions);
     res.cookie("refreshToken", refreshToken, cookieOptions);
 
@@ -189,6 +189,7 @@ export async function logoutController(req, res) {
       httpOnly: true,
       secure: true,
       sameSite: "None",
+      path: "/",
     };
     res.clearCookie("accessToken", cookieOptions);
     res.clearCookie("refreshToken", cookieOptions);

@@ -1,65 +1,63 @@
 import axios from "axios";
 import Cookies from "js-cookie";
 
+const appUrl =
+  process.env.NEXT_PUBLIC_APP_URL ||
+  "https://uniqbd-nextjs-updateversion-backend.onrender.com";
 
-const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://uniqbd-nextjs-updateversion-backend.onrender.com";
+const API = axios.create({
+  baseURL: "https://uniqbd-nextjs-updateversion-backend.onrender.com",
+  withCredentials: true,
+});
+// Add token automatically
+API.interceptors.request.use((config) => {
+  const token = Cookies.get("accessToken");
 
-export const postData = async (url, formData) => {
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
+// ================= POST =================
+export const postData = async (url, data) => {
   try {
-    const response = await fetch(appUrl + url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${Cookies.get("accessToken") || ""}`,
-      },
-      body: JSON.stringify(formData),
-      credentials: "include",
-    });
-
-    if (!response.ok) {
-      const errorData = await response.json().catch(() => ({}));
-      return { error: errorData };
-    }
-
-    const data = await response.json();
-    return data;
+    const res = await API.post(url, data);
+    return res.data;
   } catch (err) {
-    console.log("Error:", err.message);
-    return { error: err.message };
+    return {
+      error: err.response?.data || err.message,
+    };
   }
 };
 
-export const uploadImage = async (url, formData) => {
-  if (!url) throw new Error("Upload URL missing");
-
-
-  const fullUrl = url.startsWith("http") ? url : appUrl + (url.startsWith("/") ? url : "/" + url);
-
-  try {
-    const response = await axios.post(fullUrl, formData, {
-      headers: {
-        Authorization: `Bearer ${Cookies.get("accessToken") || ""}`,
-
-      },
-      withCredentials: true,
-    });
-    return response.data; 
-  } catch (error) {
-    console.error("Upload error:", error);
-    return { success: false, message: error.message };
-  }
-};
-
+// ================= GET =================
 export const fetchDataFromApi = async (url) => {
   try {
-    const { data } = await axios.get(appUrl + url, {
+    const res = await API.get(url);
+    return res.data;
+  } catch (err) {
+    return {
+      error: err.response?.data || err.message,
+    };
+  }
+};
+
+// ================= UPLOAD =================
+export const uploadImage = async (url, formData) => {
+  try {
+    const res = await API.post(url, formData, {
       headers: {
-        Authorization: `Bearer ${Cookies.get("accessToken") || ""}`,
+        "Content-Type": "multipart/form-data",
       },
     });
-    return data;
-  } catch (error) {
-    console.error(error);
-    return { error: error.message };
+
+    return res.data;
+  } catch (err) {
+    return {
+      success: false,
+      message: err.response?.data || err.message,
+    };
   }
 };

@@ -36,6 +36,7 @@ const RegistrationPage = () => {
 
     try {
       const res = await postData("/api/v1/register", formData);
+      console.log(res)
       if (res?.success) {
         toast.success("OTP sent to your email 📩");
 

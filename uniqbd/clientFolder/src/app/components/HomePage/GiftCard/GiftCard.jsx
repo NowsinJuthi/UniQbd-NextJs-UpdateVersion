@@ -4,6 +4,8 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Image from "next/image";
+const API = process.env.NEXT_PUBLIC_APP_URL;
+
 
 const GiftCard = () => {
   const [topupProducts, setTopupProducts] = useState([]);
