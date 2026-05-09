@@ -1,52 +1,44 @@
 import express from "express";
+import dotenv from "dotenv";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import http from "http";
-import dotenv from "dotenv";
-import { Server } from "socket.io";
-
 import { ConnectDb } from "./config/connectDb.js";
 import router from "./routes/api.js";
+import path from "path";
+import http from "http";
+import { Server } from "socket.io";
 
 dotenv.config();
 
 const app = express();
-const server = http.createServer(app);
-
 const PORT = process.env.PORT || 3001;
 
-// ================= CORS =================
+const server = http.createServer(app);
+
+app.set("trust proxy", 1);
+
+
 const allowedOrigins = [
   "http://localhost:3000",
-  "http://127.0.0.1:3000",
-  "https://uniqbd-nextjs-updateversion-frontend.onrender.com",
+  "https://uniqbd-nextjs.onrender.com",
 ];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin) return callback(null, true);
 
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
 
-    return callback(new Error(`Not allowed by CORS: ${origin}`));
-  },
+      return callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 
-  credentials: true,
-};
-
-app.use(cors(corsOptions));
-
-// VERY IMPORTANT
 app.options(/.*/, cors(corsOptions));
-
-// ================= MIDDLEWARE =================
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-
-// ================= SOCKET =================
 export const io = new Server(server, {
   cors: {
     origin: allowedOrigins,
@@ -54,38 +46,45 @@ export const io = new Server(server, {
   },
 });
 
-// ================= ROUTES =================
+io.on("connection", (socket) => {
+  console.log("Admin connected:", socket.id);
+
+  socket.on("disconnect", () => {
+    console.log("Admin disconnected:", socket.id);
+  });
+});
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
+
+app.use(
+  "/uploads",
+  express.static(
+    path.join(process.cwd(), "serverFolder/middleware/uploads")
+  )
+);
+
+
 app.use("/api/v1", router);
 
 app.get("/", (req, res) => {
-  res.json({
-    success: true,
-    message: "API Running 🚀",
-  });
+  res.json({ status: "API working" });
 });
 
-// ================= ERROR =================
-app.use((err, req, res, next) => {
-  console.log(err);
 
-  res.status(500).json({
-    success: false,
-    message: err.message,
-  });
-});
-
-// ================= START =================
 const startServer = async () => {
   try {
     await ConnectDb();
+    console.log("MongoDB Connected");
 
-    console.log("✅ DB Connected");
-
-    server.listen(PORT, () => {
-      console.log(`🚀 Server running on ${PORT}`);
+    server.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
     });
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
+    console.error("Server failed to start:", err);
+    process.exit(1);
   }
 };
 
