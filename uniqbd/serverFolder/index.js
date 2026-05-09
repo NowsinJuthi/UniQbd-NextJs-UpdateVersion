@@ -38,7 +38,7 @@ app.use(
   })
 );
 
-app.options(/.*/, cors(corsOptions));
+
 export const io = new Server(server, {
   cors: {
     origin: allowedOrigins,
