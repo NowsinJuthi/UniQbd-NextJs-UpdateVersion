@@ -1,8 +1,6 @@
-import path from "path";
 import homeSliderModel from "../models/homeSliderModel.js";
 import fs from "fs";
-
-const uploadDir = path.join(process.cwd(), "serverFolder/middleware/uploads");
+import { uploadDir } from "../config/uploadPath.js";
 
 export async function homeSliderController(req, res) {
   try {

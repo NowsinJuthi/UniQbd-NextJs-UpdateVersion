@@ -4,8 +4,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import connectDB from "./config/connectDb.js";
 import router from "./routes/api.js";
-import path from "path";
 import http from "http";
+import { uploadDir } from "./config/uploadPath.js";
 import { Server } from "socket.io";
 import dns from "dns";
 import mongoose from "mongoose";
@@ -22,20 +22,20 @@ const server = http.createServer(app);
 
 app.set("trust proxy", 1);
 
-const allowedOrigins = String(process.env.ALLOWED_ORIGINS)
+const allowedOrigins = String(process.env.ALLOWED_ORIGINS || "")
   .split(",")
-  .map((e) => e.trim());
+  .map((origin) => origin.trim())
+  .filter(Boolean);
 
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin) return callback(null, true);
-
-      if (allowedOrigins.includes(origin)) {
+    origin(origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
         return callback(null, true);
       }
 
-      return callback(new Error("Not allowed by CORS"));
+      console.warn("Blocked CORS origin:", origin);
+      return callback(null, false);
     },
     credentials: true,
   })
@@ -60,12 +60,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-app.use(
-  "/uploads",
-  express.static(
-    path.join(process.cwd(), "serverFolder/middleware/uploads")
-  )
-);
+app.use("/uploads", express.static(uploadDir));
 
 app.use("/api/v1", router);
 

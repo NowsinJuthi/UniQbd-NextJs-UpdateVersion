@@ -1,10 +1,7 @@
-import path from "path";
 import fs from "fs";
 import CategoryModel from "../models/categoryModel.js";
 import slugify from "slugify";
-
-
-const uploadDir = path.join(process.cwd(), "serverFolder/middleware/uploads");
+import { uploadDir } from "../config/uploadPath.js";
 
 
 
